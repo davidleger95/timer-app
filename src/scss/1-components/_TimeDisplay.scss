@@ -1,0 +1,21 @@
+body {
+  background: #f8f8f8;
+}
+.timer {
+
+  overflow: auto;
+}
+.display-time {
+  text-align: center;
+  font-size: 3em;
+  margin: 2em 0;
+}
+
+.controls {
+  margin: auto;
+  background: $light;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+}

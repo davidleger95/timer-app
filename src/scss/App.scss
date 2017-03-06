@@ -1,26 +1,11 @@
+@import "0-base/vars";
 @import "0-base/fonts";
+@import "0-base/_normalize";
 
-.App {
-  text-align: center;
-}
+/*******************************************************************************
+ * 1-components
+ ******************************************************************************/
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+@import "1-components/TimeDisplay";
+@import "1-components/Log"; 
+@import "1-components/Button";
