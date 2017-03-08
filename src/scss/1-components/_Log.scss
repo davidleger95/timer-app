@@ -20,7 +20,6 @@
   margin: 0;
   font-size: 1.5em;
   max-height: calc(100vh - 315px);
-  min-height: 300px;
   overflow: auto;
 
   .log-item {
@@ -30,5 +29,13 @@
     &:hover {
       background-color: rgba($light, 0.5);
     }
+  }
+
+  .empty-log {
+    font-style: italic;
+    opacity: 0.25;
+    padding: 3em 0.5em;
+    display: inline-block;
+    font-size: 1.5em;
   }
 }

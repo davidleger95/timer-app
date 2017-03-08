@@ -13,7 +13,8 @@ class TimeDisplay extends Component {
     this.state = {
       time: 0,
       on: false,
-      log: []
+      log: [],
+      quote: Math.floor((Math.random() * 5) + 1)
     };
     this.timer;
   }
@@ -22,17 +23,24 @@ class TimeDisplay extends Component {
     this.keyCommands();
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('keyup');
+    window.removeEventListener('keydown');
+  }
+
   keyCommands = () => {
-    window.addEventListener('keypress', (e) => {
+    window.addEventListener('keydown', e => e.preventDefault());
+    window.addEventListener('keyup', (e) => {
+      e.preventDefault();
       //alert(e.keyCode);
       switch (e.keyCode) {
         case 32:  // Space
           this.toggleOn();
           break;
-        case 114: // R
+        case 82: // R
           this.resetTime();
           break;
-        case 108:  // L
+        case 76:  // L
           this.logTime();
           break;
         case 13:  // Enter
@@ -48,7 +56,7 @@ class TimeDisplay extends Component {
     this.setState({ log: [this.state.time, ...this.state.log] });
   }
 
-  clearLog = () => this.setState({ log: [] });
+  clearLog = () => this.setState({ log: [], quote: Math.floor((Math.random() * 5) + 1) });
 
   toggleOn = () => {
     if (this.state.on) clearInterval(this.timer);
@@ -56,10 +64,15 @@ class TimeDisplay extends Component {
       time: this.state.time + 1
     }), 10);
 
-    this.setState({ on: !this.state.on });
+    this.setState({
+      on: !this.state.on
+    });
   }
 
-  resetTime = () => this.setState({ time: 0 });
+  resetTime = () => this.setState({
+    time: 0,
+    quote: Math.floor((Math.random() * 5) + 1)
+  });
 
   renderControls = () => {
     return (
@@ -94,7 +107,7 @@ class TimeDisplay extends Component {
         <h1 className="display-time">{time}</h1>
         {controls}
       </div>
-      <DisplayLog log={this.state.log} />
+      <DisplayLog log={this.state.log} quote={this.state.quote} />
 
     </div>;
   }
